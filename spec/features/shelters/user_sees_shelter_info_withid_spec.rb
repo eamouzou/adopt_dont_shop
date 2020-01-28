@@ -15,10 +15,11 @@ RSpec.describe "shelter id", type:feature do
   end
 
   it "can see the shelter info that corresponds to that id" do
-    visit "/shelter/#{@shelter1.id}"
+    visit "/shelters/#{@shelter1.id}"
 
     expect(page).to have_content("Name: #{@shelter1.name}")
     expect(page).to have_content("Address: #{@shelter1.address}")
+    save_and_open_page
     expect(page).to have_content("City: #{@shelter1.city}")
     expect(page).to have_content("State: #{@shelter1.state}")
     expect(page).to have_content("Zip: #{@shelter1.zip}")
