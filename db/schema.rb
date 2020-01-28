@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20200128021351) do
     t.string "city"
     t.string "state"
     t.string "zip"
+    t.timestamps
   end
 
 end
