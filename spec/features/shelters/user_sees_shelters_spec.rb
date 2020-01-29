@@ -18,8 +18,6 @@ RSpec.describe "shelters index", type: feature do
     visit "/shelters"
 
     expect(page).to have_content(@shelter1.name)
-    expect(page).to have_content("Street Address: #{@shelter1.address}")
     expect(page).to have_content(@shelter2.name)
-    expect(page).to have_content("Street Address: #{@shelter2.address}")
   end
 end
