@@ -21,4 +21,17 @@ RSpec.describe "create shelter", type:feature do
 
     expect(current_path).to eq('/shelters/new')
   end
+
+  it "can see form on shelters/new page" do
+    visit "/shelters/new"
+
+    # expect(page).to have_css('input[type="text"]')
+    expect(page).to have_field('shelter_name')
+    expect(page).to have_field('shelter_address')
+    expect(page).to have_field('shelter_city')
+    expect(page).to have_field('shelter_state')
+    expect(page).to have_field('shelter_zip')
+    expect(page).to have_button('Submit')
+    save_and_open_page
+  end
 end
