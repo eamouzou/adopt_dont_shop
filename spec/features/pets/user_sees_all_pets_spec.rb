@@ -21,11 +21,13 @@ RSpec.describe "pets index", type:feature do
     name: "Patra",
     approximate_age: 2,
     sex: "free",
+    shelter_id: @shelter1.id,
     shelter_name: @shelter1.name)
     @pet2 = Pet.create(image: pet2_path,
     name: "Shabba",
     approximate_age: 5,
     sex: "indigo",
+    shelter_id: @shelter2.id,
     shelter_name: @shelter2.name)
   end
 
@@ -43,5 +45,4 @@ RSpec.describe "pets index", type:feature do
     expect(page).to have_content("indigo")
     expect(page).to have_content(@shelter2.name)
   end
-
 end
