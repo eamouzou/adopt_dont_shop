@@ -1,4 +1,4 @@
-<h2>All Pets for <%= @shelter.name %> Shelter</h2>
+<h2>All Pets for "<%= @shelter.name %>" Shelter</h2>
   <%@shelter.pets.each do |pet|%>
   <img src="<%=  pet.image %>" alt="<%= pet.image %>" style="width:200px">
   <h4>Name: <%= pet.name %></h4>
@@ -6,3 +6,4 @@
   <h4>Sex: <%= pet.sex %></h4>
   </p>
   <% end %>
+  <h4><a href="/shelters/<%= @shelter.id %>/pets/new">Add Pet</a><h4>
