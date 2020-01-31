@@ -37,7 +37,7 @@ RSpec.describe "create pet" do
   scenario "see and click on link in pets index" do
     visit "/shelters/#{@shelter2.id}/pets"
 
-    click_link "New Pet"
+    click_link "Add Pet"
 
     expect(current_path).to eq("/shelters/#{@shelter2.id}/pets/new")
   end
