@@ -41,4 +41,15 @@ RSpec.describe "create pet" do
 
     expect(current_path).to eq("/shelters/#{@shelter2.id}/pets/new")
   end
+
+  scenario "see a form to add a pet" do
+    visit "/shelters/#{@shelter2.id}/pets/new"
+    save_and_open_page
+
+    expect(page).to have_field('pet_name')
+    expect(page).to have_field('pet_description')
+    expect(page).to have_field('pet_approximate_age')
+    expect(page).to have_field('pet_sex')
+  end
+
 end
