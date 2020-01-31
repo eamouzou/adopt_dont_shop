@@ -61,6 +61,9 @@ RSpec.describe "create pet" do
     click_button 'Add a Pet'
 
     expect(current_path). to eq("/shelters/#{@shelter2.id}/pets")
+    expect(page).to have_content('Medgar')
+    expect(page).to have_content(1)
+    expect(page).to have_content('flowersandrainbows')
   end
 
 end
