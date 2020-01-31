@@ -1,5 +1,5 @@
 <h2> Fill out this form to add a new pet! </h2>
-<%= form_tag "/shelters", method: 'post' do %>
+<%= form_tag "/shelters/#{@shelter.id}/pets/new", method: 'post' do %>
   <h4>Name: <%= text_field_tag 'pet_name' %></h4>
   <h4>Description: <%= text_field_tag 'pet_description' %></h4>
   <h4>Approximate Age: <%= text_field_tag 'pet_approximate_age' %></h4>
