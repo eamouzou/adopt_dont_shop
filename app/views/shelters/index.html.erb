@@ -2,9 +2,8 @@
 
   <% @shelters.each do |shelter| %>
     <h2><a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a>
-      <form action="/shelters/<%= shelter.id %>/edit">
-        <button type="submit">Edit <%= shelter.name %></button>
-      </form>
+      <%= button_to "Edit #{shelter.name}", "/shelters/#{shelter.id}/edit", method: :get %>
+      <%= button_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", :method => :delete %>
     </h2>
 
   <% end %>
