@@ -40,4 +40,14 @@ RSpec.describe 'update pet info', type:feature do
     expect(page). to have_link("Update #{@pet2.name}'s information!")
   end
 
+  scenario "see form on pet edit page" do
+    visit "/pets/#{@pet2.id}/edit"
+
+    expect(page).to have_field('pet_image')
+    expect(page).to have_field('pet_name')
+    expect(page).to have_field('pet_description')
+    expect(page).to have_field('pet_approximate_age')
+    expect(page).to have_field('pet_sex')
+  end
+
 end
