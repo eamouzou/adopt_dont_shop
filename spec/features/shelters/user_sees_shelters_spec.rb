@@ -20,4 +20,21 @@ RSpec.describe "shelters index", type: feature do
     expect(page).to have_content(@shelter1.name)
     expect(page).to have_content(@shelter2.name)
   end
+
+  scenario "sees edit shelter link" do
+    visit "/shelters"
+    link1 = "/shelters/#{@shelter1.id}/edit"
+    link2 = "/shelters/#{@shelter2.id}/edit"
+
+    expect(page).to have_link("Edit #{@shelter1.name}", href: link1)
+    expect(page).to have_link("Edit #{@shelter2.name}", href: link2)
+  end
+
+  scenario "can click link and go to edit page" do
+    visit "/shelters"
+    link1 = "/shelters/#{@shelter1.id}/edit"
+    click_link("Edit #{@shelter1.name}")
+
+    expect(current_path).to eq(link1)
+  end
 end
