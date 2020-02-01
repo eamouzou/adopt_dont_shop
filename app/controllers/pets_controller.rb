@@ -19,4 +19,8 @@ class PetsController < ApplicationController
       shelter_id: params[:id], shelter_name: Shelter.find(params[:id]).name)
     redirect_to "/shelters/#{params[:id].to_i}/pets"
   end
+
+  def edit
+    @pet = Pet.find(params[:id])
+  end
 end
