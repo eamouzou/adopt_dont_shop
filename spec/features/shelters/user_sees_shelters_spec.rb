@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "shelters index", type: feature do
+RSpec.describe "shelters index", type: :feature do
   before :each do
     @shelter1 = Shelter.create(name: "Bloke",
     address: "123456 E. Koko St.",

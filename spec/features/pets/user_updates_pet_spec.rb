@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe 'update pet info', type:feature do
+RSpec.describe 'update pet info', type: :feature do
   before(:each) do
     @shelter1 = Shelter.create(name: "Bloke",
     address: "123456 E. Koko St.",
