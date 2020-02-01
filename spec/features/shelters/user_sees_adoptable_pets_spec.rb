@@ -72,4 +72,19 @@ RSpec.describe "pets index", type:feature do
     expect(page).to have_button('Update')
   end
 
+  scenario "sees delete button next to each pet" do
+    visit "/shelters/#{@shelter1.id}/pets"
+
+    expect(page).to have_button("Delete #{@pet1.name}")
+    expect(page).to have_button("Delete #{@pet2.name}")
+  end
+
+  scenario "clicks delete button and removes pet from index page" do
+    visit "/shelters/#{@shelter1.id}/pets"
+    click_button("Delete #{@pet1.name}")
+
+    expect(current_path).to eq("/pets")
+    expect(page).not_to have_link('Patra', href:  "/pets/#{@pet1.id}")
+  end
+
 end

@@ -44,4 +44,39 @@ RSpec.describe "pets index", type:feature do
     expect(page).to have_content("indigo")
     expect(page).to have_content(@shelter2.name)
   end
+
+  scenario "sees edit button next to each pet" do
+    visit "/pets"
+
+    expect(page).to have_button("Edit #{@pet1.name}'s info!")
+    expect(page).to have_button("Edit #{@pet2.name}'s info!")
+  end
+
+  scenario "clicks edit button and sees update form" do
+    visit "/pets"
+    click_button("Edit #{@pet1.name}'s info!")
+
+    expect(current_path).to eq("/pets/#{@pet1.id}/edit")
+    expect(page).to have_field('pet_image')
+    expect(page).to have_field('pet_name')
+    expect(page).to have_field('pet_description')
+    expect(page).to have_field('pet_approximate_age')
+    expect(page).to have_field('pet_sex')
+    expect(page).to have_button('Update')
+  end
+
+  scenario "sees delete button next to each pet" do
+    visit "/pets"
+
+    expect(page).to have_button("Delete #{@pet1.name}")
+    expect(page).to have_button("Delete #{@pet2.name}")
+  end
+
+  scenario "clicks delete button and removes pet from index page" do
+    visit "/pets"
+    click_button("Delete #{@pet1.name}")
+
+    expect(current_path).to eq("/pets")
+    expect(page).not_to have_link('Patra', href:  "/pets/#{@pet1.id}")
+  end
 end
