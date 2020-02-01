@@ -49,13 +49,14 @@ RSpec.describe "deletes pet", type:feature do
     expect(page).to have_content("cuddly")
     expect(page).to have_content("free")
     expect(page).to have_content("pending")
-    expect(page).to have_button("Delete #{@pet1.name}'s whole existence'")
+    expect(page).to have_link("Delete Patra's whole existence! Go ahead!")
   end
 
   scenario "click delete button and see pet removed from index" do
-    click_button("Delete #{@pet1.name}'s whole existence! Go ahead!")
+    visit "/pets/#{@pet1.id}"
+    click_link("Delete Patra's whole existence! Go ahead!")
 
     expect(current_path).to eq("/pets")
-    expect(page).not_to have_link('Patra', href: link)
+    expect(page).not_to have_link('Patra', href:  "/pets/#{@pet1.id}")
   end
 end
