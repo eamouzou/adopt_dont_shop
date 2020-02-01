@@ -41,7 +41,7 @@ RSpec.describe "pets index", type:feature do
   scenario "sees all pet information on shelter's pets page" do
     visit "/shelters/#{@shelter1.id}/pets"
 
-    expect(page).to have_content('All Pets for "Bloke" Shelter')
+    expect(page).to have_content('All Pets for "Bloke"')
     expect(page).to have_css("img[src*='#{@pet1.image}']")
     expect(page).to have_content("Patra")
     expect(page).to have_content(2)
@@ -50,6 +50,26 @@ RSpec.describe "pets index", type:feature do
     expect(page).to have_content("Shabba")
     expect(page).to have_content(5)
     expect(page).to have_content("indigo")
+  end
+
+  scenario "sees edit button next to each pet" do
+    visit "/shelters/#{@shelter1.id}/pets"
+
+    expect(page).to have_button("Edit #{@pet1.name}'s info!")
+    expect(page).to have_button("Edit #{@pet2.name}'s info!")
+  end
+
+  scenario "clicks edit button and sees update form" do
+    visit "/shelters/#{@shelter1.id}/pets"
+    click_button("Edit #{@pet1.name}'s info!")
+
+    expect(current_path).to eq("/pets/#{@pet1.id}/edit")
+    expect(page).to have_field('pet_image')
+    expect(page).to have_field('pet_name')
+    expect(page).to have_field('pet_description')
+    expect(page).to have_field('pet_approximate_age')
+    expect(page).to have_field('pet_sex')
+    expect(page).to have_button('Update')
   end
 
 end
