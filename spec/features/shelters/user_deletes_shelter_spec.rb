@@ -1,13 +1,3 @@
-# User Story 6, Shelter Delete
-#
-# As a visitor
-# When I visit a shelter show page
-# Then I see a link to delete the shelter
-# When I click the link "Delete Shelter"
-# Then a 'DELETE' request is sent to '/shelters/:id',
-# the shelter is deleted,
-# and I am redirected to the shelter index page where I no longer see this shelter
-
 require 'rails_helper'
 
 RSpec.feature "delete shelter", type:feature do
@@ -22,6 +12,22 @@ RSpec.feature "delete shelter", type:feature do
     city: "Aville",
     state: "CO",
     zip: "83571")
+
+    pet1_path = "https://imgix.bustle.com/uploads/getty/2019/11/18/6296727a-d38c-40b4-8ffe-dbec5cd1b289-getty-954967324.jpg?w=1020&h=576&fit=crop&crop=faces&auto=format&q=70"
+    pet2_path = "https://images-ra.adoptapet.com/images/Homepage-DogV2.png"
+
+    @pet1 = Pet.create(image: pet1_path,
+    name: "Patra",
+    approximate_age: 2,
+    sex: "free",
+    shelter_id: @shelter1.id,
+    shelter_name: @shelter1.name)
+    @pet2 = Pet.create(image: pet2_path,
+    name: "Shabba",
+    approximate_age: 5,
+    sex: "indigo",
+    shelter_id: @shelter2.id,
+    shelter_name: @shelter2.name)
   end
 
   scenario "see and click link that deletes shelter" do
