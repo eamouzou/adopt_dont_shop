@@ -19,7 +19,6 @@ RSpec.describe "shelter id", type:feature do
 
     expect(page).to have_content("Name: #{@shelter1.name}")
     expect(page).to have_content("Address: #{@shelter1.address}")
-    save_and_open_page
     expect(page).to have_content("City: #{@shelter1.city}")
     expect(page).to have_content("State: #{@shelter1.state}")
     expect(page).to have_content("Zip: #{@shelter1.zip}")
