@@ -36,6 +36,16 @@ RSpec.describe "pets index", type: :feature do
     click_link("Pets")
 
     expect(current_path).to eq("/shelters/#{@shelter1.id}/pets")
+    expect(page).to have_content("Patra")
+    expect(page).to have_content("Shabba")
+
+    visit "/shelters/#{@shelter2.id}"
+
+    click_link("Pets")
+
+    expect(current_path).to eq("/shelters/#{@shelter2.id}/pets")
+    expect(page).not_to have_content("Patra")
+    expect(page).not_to have_content("Shabba")
   end
 
   scenario "sees all pet information on shelter's pets page" do
