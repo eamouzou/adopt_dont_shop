@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "delete shelter", type:feature do
+RSpec.feature "delete shelter", type: :feature do
   before :each do
     @shelter1 = Shelter.create(name: "Bloke",
     address: "123456 E. Koko St.",

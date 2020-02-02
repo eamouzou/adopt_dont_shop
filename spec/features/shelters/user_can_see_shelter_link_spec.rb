@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "shelters index", type: :feature do
-  before :each do
+RSpec.describe "shelter link", type: :feature do
+  before(:each) do
     @shelter1 = Shelter.create(name: "Bloke",
     address: "123456 E. Koko St.",
     city: "Aville",
@@ -21,42 +21,44 @@ RSpec.describe "shelters index", type: :feature do
     approximate_age: 2,
     sex: "free",
     shelter_id: @shelter1.id,
-    shelter_name: @shelter1.name)
+    shelter_name: @shelter1.name,
+    description: "cuddly",
+    adoption_status: "pending")
     @pet2 = Pet.create(image: pet2_path,
     name: "Shabba",
     approximate_age: 5,
     sex: "indigo",
     shelter_id: @shelter2.id,
-    shelter_name: @shelter2.name)
+    shelter_name: @shelter2.name,
+    description: "grumpy",
+    adoption_status: "adoptable")
   end
 
-  it "displays all shelter names" do
-    visit "/shelters"
+  scenario "clicks shelter name link to shelter show page" do
+    visit "/pets"
+    click_link("Bloke")
 
-    expect(page).to have_content(@shelter1.name)
-    expect(page).to have_content(@shelter2.name)
+    expect(current_path).to eq("/shelters/#{@shelter1.id}")
   end
 
-  scenario "sees edit shelter button" do
-    visit "/shelters"
+  scenario "clicks shelter name link to shelter show page" do
+    visit "/pets"
+    click_link("Stevie")
 
-    expect(page).to have_button("Edit #{@shelter1.name}")
-    expect(page).to have_button("Edit #{@shelter2.name}")
+    expect(current_path).to eq("/shelters/#{@shelter2.id}")
   end
 
-  scenario "can click button and go to edit page" do
+  scenario "clicks shelter name link to shelter show page" do
     visit "/shelters"
-    link1 = "/shelters/#{@shelter1.id}/edit"
-    click_button("Edit #{@shelter1.name}")
+    click_link("Bloke")
 
-    expect(current_path).to eq(link1)
+    expect(current_path).to eq("/shelters/#{@shelter1.id}")
   end
 
-  scenario "can click button and delete shelter" do
+  scenario "clicks shelter name link to shelter show page" do
     visit "/shelters"
-    click_button("Delete #{@shelter1.name}")
+    click_link("Stevie")
 
-    expect(current_path).to eq("/shelters")
-    expect(page).to_not have_content("Bloke")
+    expect(current_path).to eq("/shelters/#{@shelter2.id}")
   end
 end

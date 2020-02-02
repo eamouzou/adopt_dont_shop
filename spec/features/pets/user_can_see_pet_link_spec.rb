@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "pets show", type: :feature do
-  before :each do
+RSpec.describe "pet link", type: :feature do
+  before(:each) do
     @shelter1 = Shelter.create(name: "Bloke",
     address: "123456 E. Koko St.",
     city: "Aville",
@@ -34,22 +34,31 @@ RSpec.describe "pets show", type: :feature do
     adoption_status: "adoptable")
   end
 
-  scenario "sees link for pet on index page" do
+  scenario "clicks pet name link to pet show page" do
     visit "/pets"
-    click_link "#{@pet1.name}"
+    click_link("#{@pet1.name}")
 
     expect(current_path).to eq("/pets/#{@pet1.id}")
   end
 
-  scenario "sees pet specific information" do
-    visit "/pets/#{@pet1.id}"
+  scenario "clicks pet name link to pet show page" do
+    visit "/pets"
+    click_link("#{@pet2.name}")
 
-    expect(page).to have_css("img[src*='#{@pet1.image}']")
-    expect(page).to have_content("Patra")
-    expect(page).to have_content(2)
-    expect(page).to have_content("free")
-    expect(page).to have_content("cuddly")
-    expect(page).to have_content("pending")
+    expect(current_path).to eq("/pets/#{@pet2.id}")
   end
 
+  scenario "clicks pet name link to pet show page" do
+    visit "/shelters/#{@shelter1.id}/pets"
+    click_link("#{@pet1.name}")
+
+    expect(current_path).to eq("/pets/#{@pet1.id}")
+  end
+
+  scenario "clicks pet name link to pet show page" do
+    visit "/shelters/#{@shelter2.id}/pets"
+    click_link("#{@pet2.name}")
+
+    expect(current_path).to eq("/pets/#{@pet2.id}")
+  end
 end
