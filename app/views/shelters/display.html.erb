@@ -7,4 +7,5 @@
   <%=button_to "Edit #{pet.name}'s info!", "/pets/#{pet.id}/edit", :method => :get%>
   <p><%=button_to "Delete #{pet.name}", "/pets/#{pet.id}", :method => :delete%></p>
   <% end %>
+  <h4>Pet Count: We've got <%= @shelter.pets.count %> pet(s).</h4>
   <h4><a href="/shelters/<%= @shelter.id %>/pets/new">Add Pet</a><h4>
