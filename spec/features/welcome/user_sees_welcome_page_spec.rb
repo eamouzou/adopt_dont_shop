@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "shelters welcome", type: feature do
-  it "sees welcome message" do
-
+  it "sees welcome message and image" do
     visit "/"
 
     expect(page).to have_content("Welcome to Adopt, Don't Shop!")
+    expect(page).to have_content("Thank you for visiting our site!")
   end
 
   it "sees links to pets and shelters" do
