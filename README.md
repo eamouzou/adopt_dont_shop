@@ -91,7 +91,7 @@ BE Mod 2 Week 1 Solo Project
 
 
 ---
-Self-Evaluation
+
 | | **Feature Completeness** | **Rails** | **ActiveRecord** | **Testing and Debugging** |
 | --- | --- | --- | --- | --- |
 | **4: Exceptional**  | XXX I have completed all User Stories 100% completely including edge cases. I also completed extension story number 23.  | XXX I used css and html strategies not discussed in class in addition to testing methods not covered in class. | Highly effective and efficient use of ActiveRecord beyond what we've taught in class. Even `.each` calls will not cause additional database lookups. | XXX I created tests for every addition to the app. Each section of tests in hosted in specific folders (features or models). I have 100% coverage for features and models. |
