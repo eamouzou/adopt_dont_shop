@@ -100,11 +100,11 @@ RSpec.describe "pets index", type: :feature do
   scenario "shows a count of number of pets at this shelter" do
     visit "/shelters/#{@shelter1.id}/pets"
 
-    expect(page).to have_content("We've got 2 pets.")
+    expect(page).to have_content("We've got 2 pet(s).")
 
-    visit "/shelters/#{@shelter2.id/pets}"
+    visit "/shelters/#{@shelter2.id}/pets"
 
-    expect(page).to have_content("We've got 0 pets.")
+    expect(page).to have_content("We've got 0 pet(s).")
   end
 
 end
